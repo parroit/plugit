@@ -3,22 +3,22 @@
   "main": "index.js",
   "description": "javascript IDE",
   "version": "0.0.1",
-  "homepage": "https://github.com/parroit/sourcer",
+  "homepage": "https://github.com/parroit/plugit",
   "author": {
     "name": "Andrea Parodi",
     "email": "andrea.parodi@ebansoftware.net"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/parroit/sourcer.git"
+    "url": "https://github.com/parroit/plugit.git"
   },
   "bugs": {
-    "url": "https://github.com/parroit/sourcer/issues"
+    "url": "https://github.com/parroit/plugit/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/parroit/sourcer/blob/master/LICENSE-MIT"
+      "url": "https://github.com/parroit/plugit/blob/master/LICENSE-MIT"
     }
   ],
   "engines": {
