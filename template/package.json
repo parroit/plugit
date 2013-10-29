@@ -1,0 +1,8 @@
+{
+    "name" : "plugins",
+    "version" : "0.0.0",
+    "description" : "plugins directory",
+    "dependencies" : {},
+    "main" : "index.js",
+    "engine" : { "node" : ">=0.10" }
+}
