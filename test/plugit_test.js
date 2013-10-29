@@ -18,10 +18,14 @@ describe('plugit', function () {
         });
     });
     var testDirRoot = "test/dirs/";
-    var testDir = "test/dirs/test-plugins-dir";
+    var testDir = "./test/dirs/plugit";
+    var host = {
+        blah:"blah",
+        results:[]
+    };
     describe("init", function () {
 
-        var host = {};
+
 
         before(function (done) {
             function init(){
@@ -45,6 +49,16 @@ describe('plugit', function () {
                 expect(result).to.be.true;
                 done();
             });
+
+        });
+        it("should load plugins root module", function () {
+
+            expect(plugit.pluginsRoot.load).to.be.a('function');
+
+        });
+        it("should save host reference", function () {
+
+            expect(plugit.host.blah).to.be.blah;
 
         });
 
@@ -85,10 +99,15 @@ describe('plugit', function () {
 
         var cwd = process.cwd();
         before(function (done) {
-            plugit.install(path.join(process.cwd(),"test/mkdirp"),done);
+            var plugins = [
+                path.join(process.cwd(), "test/mkdirp"),
+                path.join(process.cwd(), "test/test-plugins/aa"),
+                path.join(process.cwd(), "test/test-plugins/bb")
+                ];
+            plugit.install(plugins,done);
         });
 
-        it("should install module under plugins directory", function (done) {
+        it("should install modules under plugins directory", function (done) {
 
             fs.exists(path.join(testDir,"node_modules/mkdirp"), function (result) {
                 expect(result).to.be.true;
@@ -117,14 +136,17 @@ describe('plugit', function () {
 
         it("should list all installed plugins", function () {
 
-            expect(plugins.length).to.be.equal(1);
+            expect(plugins.length).to.be.equal(3);
+
 
 
         });
 
         it("should list plugins by name", function () {
 
-            expect(plugins[0]).to.be.equal("mkdirp");
+            expect(plugins.indexOf("mkdirp")).to.be.greaterThan(-1);
+            expect(plugins.indexOf("aa")).to.be.greaterThan(-1);
+            expect(plugins.indexOf("bb")).to.be.greaterThan(-1);
 
 
         });
@@ -145,7 +167,7 @@ describe('plugit', function () {
         it("should remove plugin from list", function (done) {
 
                 plugit.list(function(results){
-                    expect(results.length).to.be.equal(0);
+                    expect(results.length).to.be.equal(2);
                     done()
                 });
 
@@ -167,6 +189,48 @@ describe('plugit', function () {
 
 
             expect(process.cwd()).to.be.equal(cwd);
+
+        });
+    });
+
+    describe("loadAll", function () {
+        before(function (done) {
+
+            plugit.loadAll(function(){
+                done();
+
+            });
+        });
+
+        it("should load every plugin", function () {
+
+            expect(_.keys(plugit.plugins).length).to.be.equal(2);
+
+
+        });
+
+        it("should save plugin modules", function () {
+
+            expect(plugit.plugins.aa).to.be.equal("exports aa");
+            expect(plugit.plugins.bb).to.be.equal("exports bb");
+
+
+        });
+
+        it("plugins modules executed", function () {
+
+            expect(host.results.length).to.be.equal(2);
+
+
+
+        });
+
+        it("plugins could depend one each other", function () {
+
+            expect(host.results[0]).to.be.equal("aa here");
+            expect(host.results[1]).to.be.equal("bb here");
+
+
 
         });
     });

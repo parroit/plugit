@@ -1,0 +1,9 @@
+{
+    "name": "bb",
+    "version":"0.0.0",
+    "description": "test plugin",
+    "main": "./index",
+    "dependecies":{
+        "plugit":"0.0.0"
+    }
+}

@@ -1,8 +1,8 @@
 {
-    "name" : "plugins",
+    "name" : "plugit",
     "version" : "0.0.0",
-    "description" : "plugins directory",
+    "description" : "plugit plugins repository",
     "dependencies" : {},
-    "main" : "index.js",
+    "main" : "./index",
     "engine" : { "node" : ">=0.10" }
 }
