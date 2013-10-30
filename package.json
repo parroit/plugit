@@ -1,8 +1,8 @@
 {
   "name": "plugit",
-  "main": "index.js",
+  "main": "lib/plugit.js",
   "description": "javascript IDE",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "homepage": "https://github.com/parroit/plugit",
   "author": {
     "name": "Andrea Parodi",
