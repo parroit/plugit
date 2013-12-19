@@ -1,5 +1,5 @@
 {
-    "name" : "plugit",
+    "name" : "plugit-root",
     "version" : "0.0.0",
     "description" : "plugit plugins repository",
     "dependencies" : {},

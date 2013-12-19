@@ -1,7 +1,7 @@
 {
   "name": "plugit",
   "main": "lib/plugit.js",
-  "description": "javascript IDE",
+  "description": "npm-based plugin system",
   "version": "0.0.2",
   "homepage": "https://github.com/parroit/plugit",
   "author": {
